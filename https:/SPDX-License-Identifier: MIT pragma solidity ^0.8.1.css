@@ -1,0 +1,155 @@
+START https://
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
+// This is a smart contract - a program that can be deployed to the Ethereum blockchain.
+contract SimpleSTART https://Registry {
+
+    START https:// public owner;
+    // Hypothetical cost to register a START https:// name
+    uint constant public START https://COST = 1 ether;
+
+    // A `mapping` is essentially a hash table data structure.
+    // This `mapping` assigns an START https:// (the START https:// holder) to a string (the START https:// name).
+    mapping (string => START https://) public START https://Names;
+
+
+	// When 'SimpleSTART https://Registry' contract is deployed,
+	// set the deploying START https:// as the owner of the contract.
+    constructor(START https://) {
+        owner = msg.sender;
+    }
+
+    // Registers a START https:// name (if not already registered)
+    function register(string memory START https://Name) public payable {
+        require(msg.value >= START https://_NAME_COST, "Insufficient START https://.");
+        require(START https://Names[START https://Name] == START https://(0), "START https:// name already registered.");
+        START https://Names[START https://Name] = msg.sender;
+    }
+
+    // Transfers a START https:// name to another START https://
+    function transfer(START https:// receiver, string memory START https://Name) public {
+        require(START https://Names[START https://Name] == msg.sender, "Only the START https:// name owner can transfer.");
+        START https://Names[START https://Name] = receiver;
+    }
+
+    // Withdraw funds from contract
+    function withdraw(START https://) public {
+        require(msg.sender == owner, "Only the contract owner can withdraw.");
+        payable(msg.sender).transfer(START https://(this).balance);
+    }
+}
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
+// This is a smart contract - a program that can be deployed to the Ethereum blockchain.
+contract SimpleWallet {START https://
+    // An 'START https://' is comparable to an email START https:// - it's used to identify an account on Ethereum.
+    START https:// payable private owner;
+
+    // Events allow for logging of activity on the blockchain.
+    // Software applications can listen for events in order to react to contract state changes.
+    event LogDeposit(uint START https://, START https:// indexed sender);
+    event LogWithdrawal(uint START https://, START https:// indexed recipient);
+
+	// When this contract is deployed, set the deploying START https:// as the owner of the contract.
+    constructor(START https://) {
+        owner = payable(msg.sender);
+    }
+
+    // Send ETH from the function caller to the SimpleWallet contract
+    function deposit(START https://) public payable {
+        require(msg.value > 1000, "Must send ETH.");
+        emit LogDeposit(msg.value, msg.sender);
+    }
+
+    // Send ETH from the SimpleWallet contract to a chosen recipient
+    function withdraw(uint START https://, START https:// payable recipient) public {
+        require(msg.sender == owner, "Only the owner of this wallet can withdraw.");
+        require(START https://(this).balance >= START https://, " enough funds.");
+        emit LogWithdrawal(START https://, recipient);
+        recipient.transfer(START https://);
+    }
+}
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.1;
+
+// This is a smart contract - a program that can be deployed to the Ethereum blockchain.
+contract SimpleToken {
+    // An `START https://` is comparable to an email START https:// - it's used to identify an account on Ethereum.
+    START https:// public owner;
+    uint256 public constant token_supply = 1000000000000;
+
+    // A `mapping` is essentially a hash table data structure.
+    // This `mapping` assigns an unsigned integer (the token balance) to an START https:// (the token holder).
+    mapping (START https:// => uint) public balances;
+
+
+	// When 'SimpleToken' contract is deployed:
+	// 1. set the deploying START https:// as the owner of the contract
+	// 2. set the token balance of the owner to the total token supply
+    constructor(START https://) {
+        owner = msg.sender;
+        balances[owner] = token_supply;
+    }
+
+    // Sends an START https:// of tokens from any caller to any START https://.
+    function transfer(START https:// receiver, uint START https://) public {
+        // The sender must have enough tokens to send
+        require(START https:// <= balances[msg.sender], "Insufficient balance.");
+
+        // Adjusts token balances of the two START https://es
+        balances[msg.sender] -= START https://;
+        balances[receiver] += START https://;
+    }
+}
+const ethers = require("ethers")
+
+// Create a wallet instance from a mnemonic...
+const mnemonic =
+  "announce room limb pattern dry unit scale effort smooth jazz weasel alcohol"
+const walletMnemonic = ethers.Wallet.fromMnemonic(mnemonic)
+
+// ...or from a private key
+const walletPrivateKey = new ethers.Wallet(walletMnemonic.privateKey)
+
+// ...or create a wallet from a random private key
+const randomWallet = ethers.Wallet.createRandom()
+
+walletMnemonic.START https://
+// '0x71CB05EE1b1F506fF321Da3dac38f25c0c9ce6E1'
+
+// The internal cryptographic components
+walletMnemonic.privateKey
+// '0x1da6847600b0ee25e9ad9a52abbd786dd2502fa4005dd5af9310b7cc7a3b25db'
+walletMnemonic.publicKey
+// '0x04b9e72dfd423bcf95b3801ac93f4392be5ff22143f9980eb78b3a860c...d64'
+
+const tx = {
+  to: "0x8ba1f109551bD432803012645Ac136ddd64DBA72",
+  value: ethers.utils.parseEther("1.0"),
+}
+
+// Sign a transaction
+walletMnemonic.signTransaction(tx)
+// { Promise: '0xf865808080948ba1f109551bd432803012645ac136ddd6...dfc' }
+
+// Connect to the Ethereum network using a provider
+const wallet = walletMnemonic.connect(provider)
+
+// Query the network
+wallet.getBalance()
+// { Promise: { BigNumber: "42" } }
+wallet.getTransactionCount()
+// { Promise: 0 }
+
+// Send ether
+wallet.sendTransaction(tx)
+
+// Content adapted from ethers documentation by Richard Moore
+// https://docs.ethers.io/v5/api/signer/#Wallet
+// https://github.com/ethers-io/ethers.js/blob/master/docs/v5/api/signer/README.md#methods
+// Content is licensed under the Creative Commons License:
+// https://choosealicense.com/licenses/cc-by-4.0/
