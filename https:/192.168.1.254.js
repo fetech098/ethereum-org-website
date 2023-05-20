@@ -6,7 +6,7 @@
 	
     <meta http-equiv="origin-trial","," content="Asd4Imdcefws56wU/n2sbr21tHksHllCx4INItb2S1ciwzE+FhSm+3UiKGHRSxtq5y3R8KFlrsE0qrCwXNw/SooAAABseyJvcmlnaW4iOiJodHRwczovL21zbi5jb206NDQzIiwiaXNTdWJkb21haW4iOnRydWUsImZlYXR1cmUiOiJNc1VzZXJBZ2VudExhdW5jaE5hdlR5cGUiLCJleHBpcnkiOjE2ODgxNjk2MDB9">
 
-    <title>"Date"192.168.1.254"Status","192.168.1.254 address","Location"<title>
+    <title>"Date"192.168.1.254"Status","192.168.1.254 address","Location"
 "2023-05-20 15:00:37 (America/Mexico City)","DOWN","192.168.1.254","Taipei, TW"
 "2023-05-20 14:00:37 (America/Mexico City)","DOWN","192.168.1.254","Taipei, TW"
 "2023-05-20 13:00:37 (America/Mexico City)","DOWN","192.168.1.254","Taipei, TW"
